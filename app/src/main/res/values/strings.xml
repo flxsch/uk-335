@@ -5,4 +5,7 @@
     <string name="email">Email</string>
     <string name="password">Passwort</string>
     <string name="register">Registrieren</string>
+
+    <string name="text_hint_email">E-Mail</string>
+    <string name="text_hint_password">Passwort</string>
 </resources>
