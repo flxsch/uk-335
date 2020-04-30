@@ -3,4 +3,5 @@
 
     <string name="text_hint_email">E-Mail</string>
     <string name="text_hint_password">Passwort</string>
+    <string name="place_holder_image">place_holder_image</string>
 </resources>
