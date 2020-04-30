@@ -16,30 +16,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editText5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="32dp"
-            android:ems="10"
-            android:hint="@string/text_hint_email"
-            android:inputType="textEmailAddress"
-            android:importantForAutofill="no" />
-
-        <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/text_field_email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="32dp"
+            android:ems="10"
+            android:hint="@string/text_hint_email"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
+            android:textCursorDrawable="@null" />
+
+        <EditText
+            android:id="@+id/text_field_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:ems="10"
             android:hint="@string/text_hint_password"
             android:importantForAutofill="no"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHighlight="@color/colorPrimary" />
 
     </LinearLayout>
 
