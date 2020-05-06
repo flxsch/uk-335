@@ -4,6 +4,7 @@
     <string name="text_hint_firstname">Vorname</string>
     <string name="text_hint_lastname">Nachname</string>
     <string name="text_hint_register">Registrieren</string>
+    <string name="text_hint_login">Login</string>
     <string name="text_hint_email">E-Mail</string>
     <string name="text_hint_password">Passwort</string>
 </resources>
