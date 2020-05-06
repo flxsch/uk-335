@@ -7,7 +7,7 @@
     tools:context=".MainMenuActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -22,27 +22,12 @@
         android:layout_width="413dp"
         android:layout_height="325dp"
         android:contentDescription="@string/place_holder_image"
+        android:scaleType="centerCrop"
         android:src="@drawable/place_holder_main_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/list_view_personal_details"
-        android:layout_width="409dp"
-        android:layout_height="342dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_place_holder">
-    </ListView>
 
     <Button
         android:id="@+id/button_logout"
@@ -53,8 +38,19 @@
         android:background="@color/colorPrimaryDark"
         android:text="@string/text_button_logout"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-        app:layout_constraintStart_toStartOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_main_menu"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_main_menu"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_main_menu" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_placeholder_name"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_place_holder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
