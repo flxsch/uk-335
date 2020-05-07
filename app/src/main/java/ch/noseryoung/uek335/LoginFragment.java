@@ -1,11 +1,19 @@
 package ch.noseryoung.uek335;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import ch.noseryoung.uek335.model.PasswordAuthentication;
+import ch.noseryoung.uek335.model.User;
+import ch.noseryoung.uek335.persistence.AppDatabase;
+import ch.noseryoung.uek335.persistence.UserDAO;
 
 
 /**
@@ -20,6 +28,8 @@ public class LoginFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private UserDAO mUserDao;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -55,6 +65,34 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+        Button saveUserButton = getActivity().findViewById(R.id.button_submit_login);
+        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
+
+        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
+        return view;
     }
+
+    private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public void onClick(View openActivityButton) {
+            PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
+
+            // Get Login contents
+            EditText emailView = getView().findViewById(R.id.text_field_email_login);
+            EditText passwordView = getView().findViewById(R.id.text_field_password_login);
+
+            // Get Database user
+            User user = mUserDao.getOne(emailView.getText().toString(), passwordView.getText().toString());
+
+            // Authenticate
+            if (passwordAuthentication.authenticate(passwordView.getText().toString().toCharArray(), user.getPassword())) {
+                   //TODO: Implement login with transition
+            } else {
+                //TODO: Show User toast, that login failed
+            }
+        }
+    };
 }
