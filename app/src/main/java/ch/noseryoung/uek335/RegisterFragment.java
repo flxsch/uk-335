@@ -1,11 +1,19 @@
 package ch.noseryoung.uek335;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import ch.noseryoung.uek335.model.PasswordAuthentication;
+import ch.noseryoung.uek335.model.User;
+import ch.noseryoung.uek335.persistence.AppDatabase;
+import ch.noseryoung.uek335.persistence.UserDAO;
 
 
 /**
@@ -20,6 +28,8 @@ public class RegisterFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private UserDAO mUserDao;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -49,7 +59,35 @@ public class RegisterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Button saveUserButton = getView().findViewById(R.id.button_submit_register);
+        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
+
+        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
     }
+
+    private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        public void onClick(View openActivityButton) {
+            PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
+
+            // Get Register contents
+            EditText firstNameView = getView().findViewById(R.id.field_text_vorname_register);
+            EditText lastNameView = getView().findViewById(R.id.field_text_nachname_register);
+            EditText emailView = getView().findViewById(R.id.field_email_register);
+            EditText passwordView = getView().findViewById(R.id.field_password_register);
+
+            // Create new User
+            User user = new User();
+            user.setFirstName(firstNameView.getText().toString());
+            user.setLastName(lastNameView.getText().toString());
+            user.setEmail(emailView.getText().toString());
+            user.setPassword(passwordAuthentication.hash(passwordView.getText().toString().toCharArray()));
+
+            mUserDao.insertOne(user);
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
