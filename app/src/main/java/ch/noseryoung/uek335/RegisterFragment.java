@@ -61,6 +61,20 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        Button saveUserButton = getActivity().findViewById(R.id.button_submit_register);
+        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
+
+        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
+        return view;
+    }
+
     private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
@@ -68,10 +82,10 @@ public class RegisterFragment extends Fragment {
             PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
             // Get Register contents
-            EditText firstNameView = getView().findViewById(R.id.field_text_vorname_register);
-            EditText lastNameView = getView().findViewById(R.id.field_text_nachname_register);
-            EditText emailView = getView().findViewById(R.id.field_email_register);
-            EditText passwordView = getView().findViewById(R.id.field_password_register);
+            EditText firstNameView = getView().findViewById(R.id.text_field_firstname_register);
+            EditText lastNameView = getView().findViewById(R.id.text_field_lastname_register);
+            EditText emailView = getView().findViewById(R.id.text_field_email_register);
+            EditText passwordView = getView().findViewById(R.id.text_field_password_register);
 
             // Create new User
             User user = new User();
@@ -83,18 +97,4 @@ public class RegisterFragment extends Fragment {
             mUserDao.insertOne(user);
         }
     };
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
-
-        Button saveUserButton = getActivity().findViewById(R.id.button_submit_register2);
-        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
-
-        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
-        return view;
-    }
 }
