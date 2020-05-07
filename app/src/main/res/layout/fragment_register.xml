@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/field_text_vorname_register"
+                android:id="@+id/text_field_firstname_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -31,7 +31,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/field_text_nachname_register"
+                android:id="@+id/text_field_lastname_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -41,7 +41,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/field_email_register"
+                android:id="@+id/text_field_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -51,7 +51,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/field_password_register"
+                android:id="@+id/text_field_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
