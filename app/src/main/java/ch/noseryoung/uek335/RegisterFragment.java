@@ -59,11 +59,6 @@ public class RegisterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        Button saveUserButton = getView().findViewById(R.id.button_submit_register);
-        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
-
-        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
     }
 
     private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
@@ -92,7 +87,14 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        Button saveUserButton = getActivity().findViewById(R.id.button_submit_register2);
+        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
+
+        mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
+        return view;
     }
 }
