@@ -1,5 +1,6 @@
 package ch.noseryoung.uek335;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -67,9 +68,6 @@ public class LoginFragment extends Fragment {
                 case INVALID_EMAIL:
                     Toast.makeText(context, R.string.invalid_email, Toast.LENGTH_SHORT).show();
                     break;
-                case SIMPLE_PASSWORD:
-                    Toast.makeText(context, R.string.password_too_simple, Toast.LENGTH_SHORT).show();
-                    break;
                 case VALID:
                     login(emailView, passwordView);
                     break;
@@ -79,6 +77,7 @@ public class LoginFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void login(EditText emailView, EditText passwordView) {
+        Activity currActivity = getActivity();
         PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
         String password = passwordView.getText().toString();
 
@@ -87,10 +86,10 @@ public class LoginFragment extends Fragment {
 
         // Authenticate
         if (user != null && passwordAuthentication.authenticate(password.toCharArray(), user.getPassword())) {
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            Intent intent = new Intent(currActivity, DashboardActivity.class);
             startActivity(intent);
         } else {
-            Toast.makeText(getActivity().getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+            Toast.makeText(currActivity.getApplicationContext(), R.string.wrong_creds, Toast.LENGTH_SHORT).show();
         }
     }
 }
