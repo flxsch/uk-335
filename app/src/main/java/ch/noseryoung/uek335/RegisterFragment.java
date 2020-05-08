@@ -76,7 +76,7 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(context, R.string.invalid_email, Toast.LENGTH_SHORT).show();
                     break;
                 case USER_EXISTS:
-                    Toast.makeText(context, R.string.user_exists, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.user_exists, Toast.LENGTH_LONG).show();
                     break;
                 case SIMPLE_PASSWORD:
                     Toast.makeText(context, R.string.password_too_simple, Toast.LENGTH_LONG).show();
