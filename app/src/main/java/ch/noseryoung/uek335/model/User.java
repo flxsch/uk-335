@@ -4,6 +4,7 @@ package ch.noseryoung.uek335.model;
 import android.os.Build;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -17,9 +18,10 @@ import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import ch.noseryoung.uek335.R;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -35,6 +37,10 @@ public class User {
 
     @ColumnInfo(name = "password")
     private String password;
+
+    public String getDisplayName(){
+        return "Willkommen, " + firstName + " " + lastName + "!";
+    }
 
     public int getId() {
         return id;

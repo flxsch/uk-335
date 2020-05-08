@@ -87,6 +87,7 @@ public class LoginFragment extends Fragment {
         // Authenticate
         if (user != null && passwordAuthentication.authenticate(password.toCharArray(), user.getPassword())) {
             Intent intent = new Intent(currActivity, DashboardActivity.class);
+            intent.putExtra("User", user);
             startActivity(intent);
         } else {
             Toast.makeText(currActivity.getApplicationContext(), R.string.wrong_creds, Toast.LENGTH_SHORT).show();
