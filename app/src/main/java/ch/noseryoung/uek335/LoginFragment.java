@@ -1,12 +1,15 @@
 package ch.noseryoung.uek335;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -64,14 +67,19 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+        // Inflate the layout for this fragment;
+        return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         Button saveUserButton = getActivity().findViewById(R.id.button_submit_login);
         saveUserButton.setOnClickListener(mSaveUserOnClickListener);
 
         mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
-        return view;
     }
 
     private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
@@ -81,17 +89,19 @@ public class LoginFragment extends Fragment {
             PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
             // Get Login contents
-            EditText emailView = getView().findViewById(R.id.text_field_email_login);
-            EditText passwordView = getView().findViewById(R.id.text_field_password_login);
+            EditText emailView = getActivity().findViewById(R.id.text_field_email_login);
+            EditText passwordView = getActivity().findViewById(R.id.text_field_password_login);
+
 
             // Get Database user
             User user = mUserDao.getOne(emailView.getText().toString(), passwordView.getText().toString());
 
             // Authenticate
             if (passwordAuthentication.authenticate(passwordView.getText().toString().toCharArray(), user.getPassword())) {
-                   //TODO: Implement login with transition
+                Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                startActivity(intent);
             } else {
-                //TODO: Show User toast, that login failed
+                Toast.makeText(getActivity().getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
             }
         }
     };

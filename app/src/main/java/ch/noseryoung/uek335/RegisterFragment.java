@@ -66,13 +66,17 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        ;
+        return inflater.inflate(R.layout.fragment_register, container, false);
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
         Button saveUserButton = getActivity().findViewById(R.id.button_submit_register);
         saveUserButton.setOnClickListener(mSaveUserOnClickListener);
 
         mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
-        return view;
     }
 
     private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
