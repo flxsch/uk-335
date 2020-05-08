@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -66,13 +67,17 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        ;
+        return inflater.inflate(R.layout.fragment_register, container, false);
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
         Button saveUserButton = getActivity().findViewById(R.id.button_submit_register);
         saveUserButton.setOnClickListener(mSaveUserOnClickListener);
 
         mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
-        return view;
     }
 
     private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
@@ -87,14 +92,30 @@ public class RegisterFragment extends Fragment {
             EditText emailView = getView().findViewById(R.id.text_field_email_register);
             EditText passwordView = getView().findViewById(R.id.text_field_password_register);
 
-            // Create new User
-            User user = new User();
-            user.setFirstName(firstNameView.getText().toString());
-            user.setLastName(lastNameView.getText().toString());
-            user.setEmail(emailView.getText().toString());
-            user.setPassword(passwordAuthentication.hash(passwordView.getText().toString().toCharArray()));
+            if (isInputValid(firstNameView, lastNameView, emailView, passwordView)){
+                // Create new User
+                User user = new User();
+                user.setFirstName(firstNameView.getText().toString());
+                user.setLastName(lastNameView.getText().toString());
+                user.setEmail(emailView.getText().toString());
+                user.setPassword(passwordAuthentication.hash(passwordView.getText().toString().toCharArray()));
 
-            mUserDao.insertOne(user);
+                mUserDao.insertOne(user);
+            } else {
+                Toast.makeText(getActivity().getApplicationContext(), "Invalid Input", Toast.LENGTH_SHORT).show();
+            }
         }
     };
+
+    private boolean isInputValid(EditText firstNameView, EditText lastNameView, EditText emailView, EditText passwordView){
+        String firstName = firstNameView.getText().toString();
+        String lastName = lastNameView.getText().toString();
+        String email = emailView.getText().toString();
+        String password = passwordView.getText().toString();
+
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 }

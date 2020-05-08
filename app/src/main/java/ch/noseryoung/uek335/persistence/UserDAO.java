@@ -14,8 +14,8 @@ public interface UserDAO {
     @Query("SELECT * FROM user")
     List<User> getAll();
 
-    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
-    User getOne(String email, String password);
+    @Query("SELECT * FROM user WHERE email = :email")
+    User getOne(String email);
 
     @Insert
     void insertAll(List<User> users);
