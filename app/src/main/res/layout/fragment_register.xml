@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".register.RegisterFragment">
+    tools:context=".RegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -67,17 +67,7 @@
                 android:layout_margin="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:backgroundTint="@color/colorPrimaryDark"
                 app:srcCompat="@drawable/baseline_add_white_36dp" />
-
-            <Button
-                android:id="@+id/button_submit_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="@string/text_button_submit"
-                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

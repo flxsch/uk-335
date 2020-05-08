@@ -11,6 +11,4 @@
     <string name="text_button_login">Einloggen</string>
     <string name="text_button_submit">Submit</string>
     <string name="text_placeholder_name">Vorname Nachname</string>
-    <string name="text_menu_item_login">Einloggen</string>
-    <string name="text_menu_item_register">Registrieren</string>
 </resources>
