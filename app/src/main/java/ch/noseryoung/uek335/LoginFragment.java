@@ -3,7 +3,6 @@ package ch.noseryoung.uek335;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,15 +88,15 @@ public class LoginFragment extends Fragment {
             PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
             // Get Login contents
-            EditText emailView = getActivity().findViewById(R.id.text_field_email_login);
-            EditText passwordView = getActivity().findViewById(R.id.text_field_password_login);
-
+            EditText emailView = getView().findViewById(R.id.text_field_email_login);
+            EditText passwordView = getView().findViewById(R.id.text_field_password_login);
+            String password = passwordView.getText().toString();
 
             // Get Database user
-            User user = mUserDao.getOne(emailView.getText().toString(), passwordView.getText().toString());
+            User user = mUserDao.getOne(emailView.getText().toString());
 
             // Authenticate
-            if (passwordAuthentication.authenticate(passwordView.getText().toString().toCharArray(), user.getPassword())) {
+            if (user != null && passwordAuthentication.authenticate(password.toCharArray(), user.getPassword())) {
                 Intent intent = new Intent(getActivity(), DashboardActivity.class);
                 startActivity(intent);
             } else {
