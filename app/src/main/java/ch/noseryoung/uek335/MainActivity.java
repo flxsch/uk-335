@@ -13,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import ch.noseryoung.uek335.login.LoginFragment;
-import ch.noseryoung.uek335.register.RegisterFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
