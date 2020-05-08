@@ -77,13 +77,6 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
-    public void openLoginFragment() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentcontainer, new LoginFragment());
-        fragmentTransaction.commit();
-    }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -114,7 +107,6 @@ public class RegisterFragment extends Fragment {
                 user.setPassword(passwordAuthentication.hash(passwordView.getText().toString().toCharArray()));
 
                 mUserDao.insertOne(user);
-                openLoginFragment();
             } else {
                 Toast.makeText(getActivity().getApplicationContext(), "Invalid Input", Toast.LENGTH_SHORT).show();
             }

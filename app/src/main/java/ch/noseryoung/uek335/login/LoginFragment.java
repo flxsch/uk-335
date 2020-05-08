@@ -77,14 +77,6 @@ public class LoginFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
-    public void openRegisterFragment() {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentcontainer, new RegisterFragment());
-        fragmentTransaction.commit();
-    }
-
-
     @Override
     public void onStart() {
         super.onStart();

@@ -7,6 +7,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import ch.noseryoung.uek335.login.LoginFragment;
 import ch.noseryoung.uek335.register.RegisterFragment;
 
@@ -35,14 +38,30 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menu_item_login:
-                new RegisterFragment().openLoginFragment();
+                openLoginFragment();
                                 return true;
             case R.id.menu_item_register:
-                new LoginFragment().openRegisterFragment();
+                openRegisterFragment();
                 return true;
             default:
                 return false;
         }
+    }
+
+
+    public void openLoginFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontainer, new LoginFragment());
+        fragmentTransaction.commit();
+
+    }
+
+    public void openRegisterFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontainer, new RegisterFragment());
+        fragmentTransaction.commit();
     }
 
     @Override
