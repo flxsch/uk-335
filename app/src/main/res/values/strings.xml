@@ -11,4 +11,11 @@
     <string name="text_button_login">Einloggen</string>
     <string name="text_button_submit">Submit</string>
     <string name="text_placeholder_name">Vorname Nachname</string>
+    <string name="missing_creds">Bitte fülle alle Felder aus</string>
+    <string name="invalid_email">Bitte benutze eine gültige Email</string>
+    <string name="user_registered">Neuer Benutzer wurde registriert</string>
+    <string name="firstname_too_long">Vorname darf nicht länger wie 50 Zeichen sein</string>
+    <string name="lastname_too_long">Nachname darf nicht länger wie 50 Zeichen sein</string>
+    <string name="email_too_long">Email darf nicht länger wie 100 Zeichen sein</string>
+    <string name="password_too_simple">Your password must contain uppercase, lowercase</string>
 </resources>
