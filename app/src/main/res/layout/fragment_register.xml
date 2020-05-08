@@ -60,16 +60,6 @@
                 android:hint="@string/text_hint_password"
                 android:inputType="textPassword" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_add_picture_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:backgroundTint="@color/colorPrimaryDark"
-                app:srcCompat="@drawable/baseline_add_white_36dp" />
-
             <Button
                 android:id="@+id/button_submit_register"
                 android:layout_width="wrap_content"

@@ -6,27 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".DashboardActivity">
 
-    <ImageView
-        android:id="@+id/image_place_holder"
-        android:layout_width="413dp"
-        android:layout_height="325dp"
-        android:contentDescription="@string/place_holder_image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/place_holder_main_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/text_view_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="128dp"
         android:text="@string/text_placeholder_name"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_place_holder" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
