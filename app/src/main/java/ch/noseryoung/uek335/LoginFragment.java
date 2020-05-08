@@ -39,12 +39,12 @@ public class LoginFragment extends Fragment {
         super.onStart();
 
         Button saveUserButton = getActivity().findViewById(R.id.button_submit_login);
-        saveUserButton.setOnClickListener(mSaveUserOnClickListener);
+        saveUserButton.setOnClickListener(mLoginUserOnClickListener);
 
         mUserDao = AppDatabase.getAppDb(getActivity().getApplicationContext()).getUserDao();
     }
 
-    private View.OnClickListener mSaveUserOnClickListener = new View.OnClickListener() {
+    private View.OnClickListener mLoginUserOnClickListener = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onClick(View openActivityButton) {

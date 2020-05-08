@@ -27,14 +27,6 @@ public class DashboardActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("User");
         TextView nameDisplayView = findViewById(R.id.name_display);
         nameDisplayView.setText(user.getDisplayName());
-
-        final Button logout_button = findViewById(R.id.button_logout);
-        logout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMainActivity();
-            }
-        });
     }
 
     public void openMainActivity() {
