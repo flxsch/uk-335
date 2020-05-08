@@ -1,4 +1,4 @@
-package ch.noseryoung.uek335;
+package ch.noseryoung.uek335.login;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,10 +12,16 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import ch.noseryoung.uek335.DashboardActivity;
+import ch.noseryoung.uek335.R;
 import ch.noseryoung.uek335.model.PasswordAuthentication;
 import ch.noseryoung.uek335.model.User;
 import ch.noseryoung.uek335.persistence.AppDatabase;
 import ch.noseryoung.uek335.persistence.UserDAO;
+import ch.noseryoung.uek335.register.RegisterFragment;
 
 
 /**
@@ -70,6 +76,14 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment;
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
+
+    public void openRegisterFragment() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontainer, new RegisterFragment());
+        fragmentTransaction.commit();
+    }
+
 
     @Override
     public void onStart() {

@@ -1,4 +1,4 @@
-package ch.noseryoung.uek335;
+package ch.noseryoung.uek335.register;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +11,12 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import ch.noseryoung.uek335.MainActivity;
+import ch.noseryoung.uek335.login.LoginFragment;
+import ch.noseryoung.uek335.R;
 import ch.noseryoung.uek335.model.PasswordAuthentication;
 import ch.noseryoung.uek335.model.User;
 import ch.noseryoung.uek335.persistence.AppDatabase;
@@ -71,6 +77,13 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
+    public void openLoginFragment() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontainer, new LoginFragment());
+        fragmentTransaction.commit();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -101,6 +114,7 @@ public class RegisterFragment extends Fragment {
                 user.setPassword(passwordAuthentication.hash(passwordView.getText().toString().toCharArray()));
 
                 mUserDao.insertOne(user);
+                openLoginFragment();
             } else {
                 Toast.makeText(getActivity().getApplicationContext(), "Invalid Input", Toast.LENGTH_SHORT).show();
             }

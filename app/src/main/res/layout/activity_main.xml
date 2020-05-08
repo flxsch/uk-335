@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragmentcontainer"
-        android:name="ch.noseryoung.uek335.LoginFragment"
+        android:name="ch.noseryoung.uek335.login.LoginFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/toolbar_main"
@@ -28,51 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_change"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:padding="8dp"
-        android:text="@string/text_button_register"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintStart_toStartOf="@+id/toolbar_main"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_main"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
-
-    <Button
-        android:id="@+id/button_submit_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="8dp"
-        android:text="@string/text_button_submit"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar_main"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_main" />
-
-    <Button
-        android:id="@+id/button_submit_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="8dp"
-        android:text="@string/text_button_submit"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar_main"
-        app:layout_constraintTop_toTopOf="@+id/toolbar_main" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
