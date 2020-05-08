@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu,menu);
 
@@ -48,13 +47,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void openLoginFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentcontainer, new LoginFragment());
         fragmentTransaction.commit();
-
     }
 
     public void openRegisterFragment() {
