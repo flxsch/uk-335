@@ -10,7 +10,7 @@ import ch.noseryoung.uek335.model.User;
 @Database(entities = {User.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "DemoDb";
+    private static final String DB_NAME = "NOA-DB";
     private static AppDatabase appDb;
 
     public static AppDatabase getAppDb(Context context) {
