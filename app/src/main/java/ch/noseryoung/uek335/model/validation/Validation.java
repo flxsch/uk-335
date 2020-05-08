@@ -1,4 +1,4 @@
-package ch.noseryoung.uek335.model;
+package ch.noseryoung.uek335.model.validation;
 
 public enum Validation {
     VALID,
@@ -7,5 +7,6 @@ public enum Validation {
     LASTNAME_TOO_LONG,
     EMAIL_TOO_LONG,
     MISSING_CREDS,
-    SIMPLE_PASSWORD
+    SIMPLE_PASSWORD,
+    USER_EXISTS
 }

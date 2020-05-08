@@ -19,4 +19,7 @@
     <string name="email_too_long">Email darf nicht länger wie 100 Zeichen sein</string>
     <string name="password_too_simple">Dein Passwort muss mind. 8 Zeichen lang sein, gross- und kleinbuchstaben und eine Zahl sowie ein Spezialzeichen beinhalten</string>
     <string name="wrong_creds">Falsche Logindaten</string>
+    <string name="user_exists">User mit dieser Email existiert bereits</string>
+
+
 </resources>

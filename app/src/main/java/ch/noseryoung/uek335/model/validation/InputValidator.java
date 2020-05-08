@@ -1,9 +1,13 @@
-package ch.noseryoung.uek335.model;
+package ch.noseryoung.uek335.model.validation;
 
+import android.service.autofill.UserData;
 import android.widget.EditText;
 
-public class InputValidator {
+import ch.noseryoung.uek335.model.User;
+import ch.noseryoung.uek335.persistence.AppDatabase;
+import ch.noseryoung.uek335.persistence.UserDAO;
 
+public class InputValidator {
 
     private final static String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
     private final static String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*ç/()\\\\=?`|¦°§¬¢´~äöü\\]\\[\"{}!@#$%^&+=])(?=\\S+$).{8,}$";
@@ -11,7 +15,7 @@ public class InputValidator {
     private final int MAX_LASTNAME_LEN = 50;
     private final int MAX_EMAIL_LEN = 100;
 
-    public Validation validateRegisterInput(EditText firstNameView, EditText lastNameView, EditText emailView, EditText passwordView) {
+    public Validation validateRegisterInput(UserDAO mUserDAO, EditText firstNameView, EditText lastNameView, EditText emailView, EditText passwordView) {
         String firstName = firstNameView.getText().toString();
         String lastName = lastNameView.getText().toString();
         String email = emailView.getText().toString();
@@ -30,6 +34,8 @@ public class InputValidator {
             return Validation.INVALID_EMAIL;
         } else if (isPasswordSimple(password)) {
             return Validation.SIMPLE_PASSWORD;
+        } else if (userExists(mUserDAO, email)){
+            return Validation.USER_EXISTS;
         }
         return Validation.VALID;
     }
@@ -59,5 +65,10 @@ public class InputValidator {
 
     private boolean isPasswordSimple(String password) {
         return !password.matches(PASSWORD_REGEX);
+    }
+
+    private boolean userExists(UserDAO mUserDao, String email){
+        // Check if User with this email already exists
+        return mUserDao.getOne(email) != null;
     }
 }

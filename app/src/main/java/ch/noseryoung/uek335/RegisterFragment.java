@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import ch.noseryoung.uek335.model.InputValidator;
+import ch.noseryoung.uek335.model.validation.InputValidator;
 import ch.noseryoung.uek335.model.PasswordAuthentication;
 import ch.noseryoung.uek335.model.User;
-import ch.noseryoung.uek335.model.Validation;
+import ch.noseryoung.uek335.model.validation.Validation;
 import ch.noseryoung.uek335.persistence.AppDatabase;
 import ch.noseryoung.uek335.persistence.UserDAO;
 
@@ -56,7 +56,7 @@ public class RegisterFragment extends Fragment {
             EditText emailView = getView().findViewById(R.id.text_field_email_register);
             EditText passwordView = getView().findViewById(R.id.text_field_password_register);
 
-            Validation validationLevel = inputValidator.validateRegisterInput(firstNameView, lastNameView, emailView, passwordView);
+            Validation validationLevel = inputValidator.validateRegisterInput(mUserDao, firstNameView, lastNameView, emailView, passwordView);
 
             // Display message depending on validation level
             switch (validationLevel) {
@@ -74,6 +74,9 @@ public class RegisterFragment extends Fragment {
                     break;
                 case INVALID_EMAIL:
                     Toast.makeText(context, R.string.invalid_email, Toast.LENGTH_SHORT).show();
+                    break;
+                case USER_EXISTS:
+                    Toast.makeText(context, R.string.user_exists, Toast.LENGTH_SHORT).show();
                     break;
                 case SIMPLE_PASSWORD:
                     Toast.makeText(context, R.string.password_too_simple, Toast.LENGTH_LONG).show();
