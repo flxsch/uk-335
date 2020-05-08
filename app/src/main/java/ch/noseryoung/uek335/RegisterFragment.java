@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import ch.noseryoung.uek335.model.validation.InputValidator;
 import ch.noseryoung.uek335.model.PasswordAuthentication;
 import ch.noseryoung.uek335.model.User;
+import ch.noseryoung.uek335.model.validation.InputValidator;
 import ch.noseryoung.uek335.model.validation.Validation;
 import ch.noseryoung.uek335.persistence.AppDatabase;
 import ch.noseryoung.uek335.persistence.UserDAO;
