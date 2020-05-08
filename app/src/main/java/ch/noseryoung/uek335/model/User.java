@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import ch.noseryoung.uek335.R;
 
 @Entity
 public class User implements Serializable {
@@ -38,8 +39,9 @@ public class User implements Serializable {
     private String password;
 
     public String getDisplayName(){
-        return "Welcome " + firstName + " " + lastName;
+        return "Willkommen, " + firstName + " " + lastName + "!";
     }
+
     public int getId() {
         return id;
     }
